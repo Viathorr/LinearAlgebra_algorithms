@@ -3,20 +3,30 @@ import time
 import math
 from matrix_addition_subtraction import SquareMatricesAdditionOrSubtraction
 from matrix_padding import PowerOfTwoSquareMatrixPadding
-import threading
+
+
+def print_matrix(matrix: list[list[int | float]]):
+    for row in matrix:
+        print(row)
 
 
 class MatrixMultiplication(ABC):
+    @abstractmethod
+    def multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
+        pass
+
+
+# Proxy pattern (checks whether matrices are valid for multiplication)
+class ValidatedMatrixMultiplication(MatrixMultiplication):
+    def __init__(self, matrix_multiplication: MatrixMultiplication) -> None:
+        self._matrix_multiplication = matrix_multiplication
+
     def multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
         if self.__can_multiply(matrix1, matrix2):
-            return self._compute(matrix1, matrix2)
+            return self._matrix_multiplication.multiply(matrix1, matrix2)
         else:
             raise Exception('Matrices with provided dimensions can\'t be multiplied: The number of columns in first'
                             'matrix is not equal to the number of rows in second matrix.')
-
-    @abstractmethod
-    def _compute(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
-        pass
 
     def __can_multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> bool:
         if len(matrix1) and len(matrix2) and len(matrix1[0]) == len(matrix2):
@@ -25,8 +35,21 @@ class MatrixMultiplication(ABC):
             return False
 
 
+# Decorator pattern (adds execution time counting and displaying)
+class TimeMatrixMultiplication(MatrixMultiplication):
+    def __init__(self, matrix_multiplication: MatrixMultiplication):
+        self._matrix_multiplication = matrix_multiplication
+
+    def multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
+        start = time.time()
+        res = self._matrix_multiplication.multiply(matrix1, matrix2)
+        print(f'Multiplication execution time: {time.time() - start:.6f}s')
+        return res
+
+
+# Time Complexity: O(n^3)
 class NaiveMatrixMultiplication(MatrixMultiplication):
-    def _compute(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
+    def multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
         rows_1, rows_2, cols_1, cols_2 = len(matrix1), len(matrix2), len(matrix1[0]), len(matrix2[0])
 
         res_matrix = [[0 for _ in range(cols_2)] for _ in range(rows_1)]
@@ -39,14 +62,18 @@ class NaiveMatrixMultiplication(MatrixMultiplication):
         return res_matrix
 
 
+# Time Complexity: O(n^2.8074)
 class StrassenMatrixMultiplication(MatrixMultiplication):
-    def _compute(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
+    def multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
         rows_1, cols_1, cols_2 = len(matrix1), len(matrix1[0]), len(matrix2[0])
         max_dim = max([rows_1, cols_1, cols_2])
         new_dim = 2 ** math.ceil(math.log2(max_dim))
         matrix1 = PowerOfTwoSquareMatrixPadding.pad_matrix(matrix1, new_dim)
         matrix2 = PowerOfTwoSquareMatrixPadding.pad_matrix(matrix2, new_dim)
+        start = time.time()
         res_matrix = self.__strassen_algorithm(matrix1, matrix2, new_dim)
+        end = time.time()
+        print(f'Time: {end - start:.6f} seconds')
         return [[res_matrix[i][j] for j in range(cols_2)] for i in range(rows_1)]
 
     def __strassen_algorithm(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]],
@@ -130,26 +157,29 @@ class StrassenMatrixMultiplication(MatrixMultiplication):
 
 
 if __name__ == "__main__":
-    matrix_a = [[1, 2] * 100 for _ in range(100)]
-    matrix_b = [[2, 2] * 100 for _ in range(200)]
+    matrix_a = [[46, 12] * 3 for _ in range(6)]
+    matrix_b = [[74, 38] * 3 for _ in range(6)]
 
     # dummy_matrix = [[1, 2, 3, 0, 0], [3, 4, 5, 0, 0], [0, 0, 0, 0, 0]]
     # rows1, cols2 = 2, 3
     # print([[dummy_matrix[i][j] for j in range(cols2)] for i in range(rows1)])
 
     multiplication = NaiveMatrixMultiplication()
+    validated_multiplication = ValidatedMatrixMultiplication(multiplication)
+    multiplication_with_exec_time = TimeMatrixMultiplication(validated_multiplication)
     start_time = time.time()
-    multiple_matrix = multiplication.multiply(matrix_a, matrix_b)
-    end_time = time.time()
-    print(f"Multiple of two matrices: {multiple_matrix}, Time: {end_time - start_time:.6f} seconds")
-    print(f'size: {len(multiple_matrix)} x {len(multiple_matrix[0])}')
+    multiple_matrix = [[]]
+    try:
+        multiple_matrix = multiplication_with_exec_time.multiply(matrix_a, matrix_b)
+    except Exception as err:
+        print(f'Error: \n{err.args[0]}')
+    else:
+        print(f"Multiple of two matrices: {multiple_matrix}, Time: {time.time() - start_time:.6f} seconds")
+        print(f'size: {len(multiple_matrix)} x {len(multiple_matrix[0])}')
 
-    multiplication = StrassenMatrixMultiplication()
-    start_time = time.time()
-    multiple_matrix2 = multiplication.multiply(matrix_a, matrix_b)
-    end_time = time.time()
-    print(f"Multiple of two matrices: {multiple_matrix2}, Time: {end_time - start_time:.6f} seconds")
-    print(f'size: {len(multiple_matrix2)} x {len(multiple_matrix2[0])}')
-
-
-
+    # multiplication = StrassenMatrixMultiplication()
+    # start_time = time.time()
+    # multiple_matrix2 = multiplication.multiply(matrix_a, matrix_b)
+    # end_time = time.time()
+    # print(f"Multiple of two matrices: {multiple_matrix2}, Time: {end_time - start_time:.6f} seconds")
+    # print(f'size: {len(multiple_matrix2)} x {len(multiple_matrix2[0])}')

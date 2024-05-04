@@ -1,7 +1,7 @@
-from algorithms.matrix_addition_subtraction import SquareMatricesAdditionOrSubtraction
+from linear_algebra_algorithms.matrix_addition_subtraction import SquareMatricesAdditionOrSubtraction
 # from copy import deepcopy, copy
 import math
-from algorithms.matrix_padding import PowerOfTwoSquareMatrixPadding
+from linear_algebra_algorithms.matrix_padding import PowerOfTwoSquareMatrixPadding
 
 # matrix1 = [[1, 2], [2, 3]]
 # matrix2 = [[2, 3], [3, 5]]

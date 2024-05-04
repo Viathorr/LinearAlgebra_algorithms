@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 
 
 class MatrixPadding(ABC):
-    # doesn't matter whether matrix is passed by value or by reference
     @staticmethod
     @abstractmethod
     def pad_matrix(matrix: list[list[int | float]], new_dim: int) -> list[list[int | float]]:
