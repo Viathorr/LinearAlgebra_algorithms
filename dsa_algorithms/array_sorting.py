@@ -12,16 +12,6 @@ class ArraySorting(ABC):
         pass
 
 
-class ExecutionTimeDecorator(ArraySorting):
-    def __init__(self, alg: ArraySorting):
-        self.__algorithm = alg
-
-    def sort(self, array: list[int | float | str]) -> None:
-        start = time.time()
-        self.__algorithm.sort(array)
-        print(f'Sorting execution time: {time.time() - start:.6f}s')
-
-
 class ArraySortingProxy(ArraySorting):
     def __init__(self, sorting: ArraySorting):
         self._sorting = sorting
@@ -33,8 +23,7 @@ class ArraySortingProxy(ArraySorting):
             raise TypeError('Array should contain only int, float or str types.')
 
     def __check_array_type(self, array: list):
-        return all(isinstance(x, int) for x in array) or all(isinstance(x, float) for x in array) or \
-               all(isinstance(x, str) for x in array)
+        return all(isinstance(x, (int, float)) for x in array) or all(isinstance(x, str) for x in array)
 
 
 class AQuickSort(ArraySorting):
@@ -150,35 +139,3 @@ class MultithreadingMergeSort(AMergeSort):
         th_2.join()
 
         self._merge(array, left, right)
-
-
-def sorting_check(sorting_algorithm: ArraySorting) -> None:
-    array = [1, 4, 2, 8, 2, 4, 9, 23, 1, 0, -4, -1] * 200
-    decorator = ExecutionTimeDecorator(sorting_algorithm)
-    decorator.sort(array)
-    print(f'Sorted array: {array}')
-
-
-def main():
-    arr = [1, 4, 2, 8, 2, 4, 9, 23, 1, 0, -4, -1] * 200
-    print(f'Initial array: {arr}')
-
-    print('\n\n~~~~ Quick Sort ~~~~')
-    quick_sort = QuickSort()
-    sorting_check(quick_sort)
-
-    print('\n\n~~~~ Multithreading Quick Sort ~~~~')
-    multithreading_quick_sort = MultithreadingQuickSort()
-    sorting_check(multithreading_quick_sort)
-
-    print('\n\n~~~~ Merge Sort ~~~~')
-    merge_sort = MergeSort()
-    sorting_check(merge_sort)
-
-    print('\n\n~~~~ Multithreading Merge Sort ~~~~')
-    multithreading_merge_sort = MultithreadingMergeSort()
-    sorting_check(multithreading_merge_sort)
-
-
-if __name__ == '__main__':
-    main()
