@@ -6,7 +6,9 @@ from threading import Thread
 class ArraySorting(ABC):
     @abstractmethod
     # Array is passed by ref, so it is changed automatically
-    def sort(self, array: list[int | float]) -> None:
+    # Number arrays are sorted in ascending order
+    # String arrays are sorted in alphabetical order
+    def sort(self, array: list[int | float | str]) -> None:
         pass
 
 
@@ -14,21 +16,36 @@ class ExecutionTimeDecorator(ArraySorting):
     def __init__(self, alg: ArraySorting):
         self.__algorithm = alg
 
-    def sort(self, array: list[int | float]) -> None:
+    def sort(self, array: list[int | float | str]) -> None:
         start = time.time()
         self.__algorithm.sort(array)
         print(f'Sorting execution time: {time.time() - start:.6f}s')
 
 
+class ArraySortingProxy(ArraySorting):
+    def __init__(self, sorting: ArraySorting):
+        self._sorting = sorting
+
+    def sort(self, array: list[int | float | str]) -> None:
+        if self.__check_array_type(array):
+            self._sorting.sort(array)
+        else:
+            raise TypeError('Array should contain only int, float or str types.')
+
+    def __check_array_type(self, array: list):
+        return all(isinstance(x, int) for x in array) or all(isinstance(x, float) for x in array) or \
+               all(isinstance(x, str) for x in array)
+
+
 class AQuickSort(ArraySorting):
-    def sort(self, array: list[int | float]) -> None:
+    def sort(self, array: list[int | float | str]) -> None:
         self.quick_sort(array, 0, len(array) - 1)
 
     @abstractmethod
-    def quick_sort(self, array: list[int | float], beg: int, end: int) -> None:
+    def quick_sort(self, array: list[int | float | str], beg: int, end: int) -> None:
         pass
 
-    def _partition(self, array: list[int | float], beg: int, end: int) -> int:
+    def _partition(self, array: list[int | float | str], beg: int, end: int) -> int:
         pivot = array[end]
         index = beg
 
@@ -44,7 +61,7 @@ class AQuickSort(ArraySorting):
 
 # Time Complexity O(n*log_n)
 class QuickSort(AQuickSort):
-    def quick_sort(self, array: list[int | float], beg: int, end: int) -> None:
+    def quick_sort(self, array: list[int | float | str], beg: int, end: int) -> None:
         if beg <= end:
             pivot_index = self._partition(array, beg, end)
             self.quick_sort(array, beg, pivot_index - 1)
@@ -55,7 +72,7 @@ class MultithreadingQuickSort(AQuickSort):
     def __init__(self):
         self._quick_sorting = QuickSort()
 
-    def quick_sort(self, array: list[int | float], beg: int, end: int) -> None:
+    def quick_sort(self, array: list[int | float | str], beg: int, end: int) -> None:
         if beg <= end:
             pivot_index = self._partition(array, beg, end)
 
@@ -70,14 +87,14 @@ class MultithreadingQuickSort(AQuickSort):
 
 
 class AMergeSort(ArraySorting):
-    def sort(self, array: list[int | float]) -> None:
+    def sort(self, array: list[int | float | str]) -> None:
         self.merge_sort(array)
 
     @abstractmethod
-    def merge_sort(self, array: list[int | float]):
+    def merge_sort(self, array: list[int | float | str]):
         pass
 
-    def _merge(self, array: list[int | float], left: list[int | float], right: list[int | float]):
+    def _merge(self, array: list[int | float | str], left: list[int | float | str], right: list[int | float | str]):
         left_i, right_i, arr_i = 0, 0, 0
 
         while left_i < len(left) and right_i < len(right):
@@ -103,7 +120,7 @@ class AMergeSort(ArraySorting):
 
 # Time Complexity O(n*log_n)
 class MergeSort(AMergeSort):
-    def merge_sort(self, array: list[int | float]):
+    def merge_sort(self, array: list[int | float | str]):
         if len(array) < 2:
             return
         mid = len(array) // 2
@@ -117,7 +134,7 @@ class MultithreadingMergeSort(AMergeSort):
     def __init__(self):
         self._merge_sorting = MergeSort()
 
-    def merge_sort(self, array: list[int | float]):
+    def merge_sort(self, array: list[int | float | str]):
         if len(array) < 2:
             return
         mid = len(array) // 2
