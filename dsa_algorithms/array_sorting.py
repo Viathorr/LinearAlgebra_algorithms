@@ -22,10 +22,10 @@ class ExecutionTimeDecorator(ArraySorting):
 
 class AQuickSort(ArraySorting):
     def sort(self, array: list[int | float]) -> None:
-        self._quick_sort(array, 0, len(array) - 1)
+        self.quick_sort(array, 0, len(array) - 1)
 
     @abstractmethod
-    def _quick_sort(self, array: list[int | float], beg: int, end: int) -> None:
+    def quick_sort(self, array: list[int | float], beg: int, end: int) -> None:
         pass
 
     def _partition(self, array: list[int | float], beg: int, end: int) -> int:
@@ -44,23 +44,23 @@ class AQuickSort(ArraySorting):
 
 # Time Complexity O(n*log_n)
 class QuickSort(AQuickSort):
-    def _quick_sort(self, array: list[int | float], beg: int, end: int) -> None:
+    def quick_sort(self, array: list[int | float], beg: int, end: int) -> None:
         if beg <= end:
             pivot_index = self._partition(array, beg, end)
-            self._quick_sort(array, beg, pivot_index - 1)
-            self._quick_sort(array, pivot_index + 1, end)
+            self.quick_sort(array, beg, pivot_index - 1)
+            self.quick_sort(array, pivot_index + 1, end)
 
 
 class MultithreadingQuickSort(AQuickSort):
     def __init__(self):
         self._quick_sorting = QuickSort()
 
-    def _quick_sort(self, array: list[int | float], beg: int, end: int) -> None:
+    def quick_sort(self, array: list[int | float], beg: int, end: int) -> None:
         if beg <= end:
             pivot_index = self._partition(array, beg, end)
 
-            th_1 = Thread(target=self._quick_sort, args=(array, beg, pivot_index - 1))
-            th_2 = Thread(target=self._quick_sort, args=(array, pivot_index + 1, end))
+            th_1 = Thread(target=self._quick_sorting.quick_sort, args=(array, beg, pivot_index - 1))
+            th_2 = Thread(target=self._quick_sorting.quick_sort, args=(array, pivot_index + 1, end))
 
             th_1.start()
             th_2.start()
@@ -71,10 +71,10 @@ class MultithreadingQuickSort(AQuickSort):
 
 class AMergeSort(ArraySorting):
     def sort(self, array: list[int | float]) -> None:
-        self._merge_sort(array)
+        self.merge_sort(array)
 
     @abstractmethod
-    def _merge_sort(self, array: list[int | float]):
+    def merge_sort(self, array: list[int | float]):
         pass
 
     def _merge(self, array: list[int | float], left: list[int | float], right: list[int | float]):
@@ -103,25 +103,28 @@ class AMergeSort(ArraySorting):
 
 # Time Complexity O(n*log_n)
 class MergeSort(AMergeSort):
-    def _merge_sort(self, array: list[int | float]):
+    def merge_sort(self, array: list[int | float]):
         if len(array) < 2:
             return
         mid = len(array) // 2
         left, right = array[:mid], array[mid:]
-        self._merge_sort(left)
-        self._merge_sort(right)
+        self.merge_sort(left)
+        self.merge_sort(right)
         self._merge(array, left, right)
 
 
 class MultithreadingMergeSort(AMergeSort):
-    def _merge_sort(self, array: list[int | float]):
+    def __init__(self):
+        self._merge_sorting = MergeSort()
+
+    def merge_sort(self, array: list[int | float]):
         if len(array) < 2:
             return
         mid = len(array) // 2
         left, right = array[:mid], array[mid:]
 
-        th_1 = Thread(target=self._merge_sort, args=(left,))
-        th_2 = Thread(target=self._merge_sort, args=(right,))
+        th_1 = Thread(target=self._merge_sorting.merge_sort, args=(left,))
+        th_2 = Thread(target=self._merge_sorting.merge_sort, args=(right,))
 
         th_1.start()
         th_2.start()
@@ -132,39 +135,32 @@ class MultithreadingMergeSort(AMergeSort):
         self._merge(array, left, right)
 
 
+def sorting_check(sorting_algorithm: ArraySorting) -> None:
+    array = [1, 4, 2, 8, 2, 4, 9, 23, 1, 0, -4, -1] * 200
+    decorator = ExecutionTimeDecorator(sorting_algorithm)
+    decorator.sort(array)
+    print(f'Sorted array: {array}')
+
+
 def main():
-    arr = [1, 4, 2, 8, 2, 4, 9, 23, 1, 0, -4, -1] * 150
-
-    print('~~~~ Quick Sort ~~~~')
+    arr = [1, 4, 2, 8, 2, 4, 9, 23, 1, 0, -4, -1] * 200
     print(f'Initial array: {arr}')
+
+    print('\n\n~~~~ Quick Sort ~~~~')
     quick_sort = QuickSort()
-    decorator = ExecutionTimeDecorator(quick_sort)
-    decorator.sort(arr)
-    print(f'Sorted array: {arr}')
+    sorting_check(quick_sort)
 
-    print('~~~~ Multithreading Quick Sort ~~~~')
-    arr = [1, 4, 2, 8, 2, 4, 9, 23, 1, 0, -4, -1] * 150
-    print(f'Initial array: {arr}')
+    print('\n\n~~~~ Multithreading Quick Sort ~~~~')
     multithreading_quick_sort = MultithreadingQuickSort()
-    decorator = ExecutionTimeDecorator(multithreading_quick_sort)
-    decorator.sort(arr)
-    print(f'Sorted array: {arr}')
+    sorting_check(multithreading_quick_sort)
 
     print('\n\n~~~~ Merge Sort ~~~~')
-    arr = [1, 4, 2, 8, 2, 4, 9, 23, 1, 0, -4, -1] * 150
-    print(f'Initial array: {arr}')
     merge_sort = MergeSort()
-    decorator = ExecutionTimeDecorator(merge_sort)
-    decorator.sort(arr)
-    print(f'Sorted array: {arr}')
+    sorting_check(merge_sort)
 
     print('\n\n~~~~ Multithreading Merge Sort ~~~~')
-    arr = [1, 4, 2, 8, 2, 4, 9, 23, 1, 0, -4, -1] * 150
-    print(f'Initial array: {arr}')
     multithreading_merge_sort = MultithreadingMergeSort()
-    decorator = ExecutionTimeDecorator(multithreading_merge_sort)
-    decorator.sort(arr)
-    print(f'Sorted array: {arr}')
+    sorting_check(multithreading_merge_sort)
 
 
 if __name__ == '__main__':
