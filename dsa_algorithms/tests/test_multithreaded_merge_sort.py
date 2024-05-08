@@ -1,5 +1,6 @@
 import pytest
-from ..array_sorting import MultithreadingMergeSort, ArraySortingProxy
+from ..array_sorting import MultithreadingMergeSort
+from ..array_sorting_proxy import ArraySortingProxy
 
 
 @pytest.fixture

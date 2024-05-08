@@ -1,5 +1,6 @@
 import pytest
-from ..array_sorting import MergeSort, ArraySortingProxy
+from ..array_sorting import MergeSort
+from ..array_sorting_proxy import ArraySortingProxy
 
 
 @pytest.fixture
