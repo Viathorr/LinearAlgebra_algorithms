@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dsa_algorithms.array_sorting &#8212; Algorithms 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/scrolls.css?v=966ca10f" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/theme_extras.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div id="content">
+      <div class="header">
+        <h1 class="heading"><a href="../../index.html"
+          title="back to the documentation overview"><span>dsa_algorithms.array_sorting</span></a></h1>
+      </div>
+      <div class="relnav" role="navigation" aria-label="related navigation">
+        <a href="#">dsa_algorithms.array_sorting</a>
+      </div>
+      <div id="contentwrapper">
+        <div role="main">
+        
+  <h1>Source code for dsa_algorithms.array_sorting</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+
+
+<div class="viewcode-block" id="ArraySorting">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.ArraySorting">[docs]</a>
+<span class="k">class</span> <span class="nc">ArraySorting</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Abstract base class for sorting algorithms.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ArraySorting.sort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.ArraySorting.sort">[docs]</a>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Abstract method that should be implemented by subclasses.</span>
+<span class="sd">        Sorts the given number array in ascending order, and string array in alphabetical order.</span>
+<span class="sd">        The original array is modified, and it should contain only integers/floats or only strings.</span>
+
+<span class="sd">        :param array: The array to be sorted.</span>
+<span class="sd">        :type array: list[int | float | str]</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="AQuickSort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.AQuickSort">[docs]</a>
+<span class="k">class</span> <span class="nc">AQuickSort</span><span class="p">(</span><span class="n">ArraySorting</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Abstract base class for quick sort algorithm.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="AQuickSort.sort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.AQuickSort.sort">[docs]</a>
+    <span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sorts the given number array in ascending order, and string array in alphabetical order</span>
+<span class="sd">        using quick sort algorithm.</span>
+<span class="sd">        The original array is modified, and it should contain only integers/floats or only strings.</span>
+
+<span class="sd">        :param array: The array to be sorted.</span>
+<span class="sd">        :type array: list[int | float | str]</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quick_sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AQuickSort.quick_sort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.AQuickSort.quick_sort">[docs]</a>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">],</span> <span class="n">beg</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Abstract method that should be implemented by subclasses.</span>
+<span class="sd">        Sorts the given array using the quick sort algorithm.</span>
+
+<span class="sd">        :param array: The array to be sorted.</span>
+<span class="sd">        :type array: list[int | float | str]</span>
+<span class="sd">        :param beg: The beginning index of the array.</span>
+<span class="sd">        :type beg: int</span>
+<span class="sd">        :param end: The ending index of the array.</span>
+<span class="sd">        :type end: int</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_partition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">],</span> <span class="n">beg</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Partitions the array by the last element(pivot). Elements that are &#39;greater&#39; than the pivot are placed to</span>
+<span class="sd">        the right of the pivot, while other elements are placed to the left of the pivot in the array.</span>
+
+<span class="sd">        :param array: The array to be partitioned.</span>
+<span class="sd">        :type array: list[int | float | str]</span>
+<span class="sd">        :param beg: The beginning index of the array.</span>
+<span class="sd">        :type beg: int</span>
+<span class="sd">        :param end: The ending index of the array.</span>
+<span class="sd">        :type end: int</span>
+
+<span class="sd">        :return: The index of the pivot element in array.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pivot</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">end</span><span class="p">]</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">beg</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">beg</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">pivot</span><span class="p">:</span>
+                <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">end</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">index</span></div>
+
+
+
+<span class="c1"># Time Complexity O(n*log_n)</span>
+<div class="viewcode-block" id="QuickSort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.QuickSort">[docs]</a>
+<span class="k">class</span> <span class="nc">QuickSort</span><span class="p">(</span><span class="n">AQuickSort</span><span class="p">):</span>
+<div class="viewcode-block" id="QuickSort.quick_sort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.QuickSort.quick_sort">[docs]</a>
+    <span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">],</span> <span class="n">beg</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sorts the given array using the sequential version of quick sort algorithm.</span>
+
+<span class="sd">        :param array: The array to be sorted.</span>
+<span class="sd">        :type array: list[int | float | str]</span>
+<span class="sd">        :param beg: The beginning index of the array.</span>
+<span class="sd">        :type beg: int</span>
+<span class="sd">        :param end: The ending index of the array.</span>
+<span class="sd">        :type end: int</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">beg</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">:</span>
+            <span class="n">pivot_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partition</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">beg</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">quick_sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">beg</span><span class="p">,</span> <span class="n">pivot_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">quick_sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">pivot_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="MultithreadingQuickSort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.MultithreadingQuickSort">[docs]</a>
+<span class="k">class</span> <span class="nc">MultithreadingQuickSort</span><span class="p">(</span><span class="n">AQuickSort</span><span class="p">):</span>
+    <span class="c1"># def __init__(self):</span>
+    <span class="c1">#     self._quick_sorting = QuickSort()</span>
+
+<div class="viewcode-block" id="MultithreadingQuickSort.quick_sort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.MultithreadingQuickSort.quick_sort">[docs]</a>
+    <span class="k">def</span> <span class="nf">quick_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">],</span> <span class="n">beg</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sorts the given array using the multithreading version of quick sort algorithm.</span>
+
+<span class="sd">        :param array: The array to be sorted.</span>
+<span class="sd">        :type array: list[int | float | str]</span>
+<span class="sd">        :param beg: The beginning index of the array.</span>
+<span class="sd">        :type beg: int</span>
+<span class="sd">        :param end: The ending index of the array.</span>
+<span class="sd">        :type end: int</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">beg</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">:</span>
+            <span class="n">pivot_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partition</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">beg</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+
+            <span class="n">th_1</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">quick_sort</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">beg</span><span class="p">,</span> <span class="n">pivot_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">th_2</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">quick_sort</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">pivot_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="p">))</span>
+
+            <span class="n">th_1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+            <span class="n">th_2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+            <span class="n">th_1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+            <span class="n">th_2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="AMergeSort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.AMergeSort">[docs]</a>
+<span class="k">class</span> <span class="nc">AMergeSort</span><span class="p">(</span><span class="n">ArraySorting</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Abstract base class for merge sort algorithm.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="AMergeSort.sort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.AMergeSort.sort">[docs]</a>
+    <span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sorts the given number array in ascending order, and string array in alphabetical order</span>
+<span class="sd">        using quick sort algorithm.</span>
+<span class="sd">        The original array is modified, and it should contain only integers/floats or only strings.</span>
+
+<span class="sd">        :param array: The array to be sorted.</span>
+<span class="sd">        :type array: list[int | float | str]</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">merge_sort</span><span class="p">(</span><span class="n">array</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AMergeSort.merge_sort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.AMergeSort.merge_sort">[docs]</a>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Abstract method that should be implemented by subclasses.</span>
+<span class="sd">        Sorts the given array using the merge sort algorithm.</span>
+
+<span class="sd">        :param array: The array to be sorted.</span>
+<span class="sd">        :type array: list[int | float | str]</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">],</span> <span class="n">left</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">],</span> <span class="n">right</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">])</span>\
+            <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Merges two subarrays into a single sorted array.</span>
+<span class="sd">        Modifies the original array by merging the two subarrays in sorted order.</span>
+
+<span class="sd">        :param array: The original array containing two subarrays.</span>
+<span class="sd">        :type array: list[int | float | str]</span>
+<span class="sd">        :param left: The left subarray to be merged.</span>
+<span class="sd">        :type left: list[int | float | str]</span>
+<span class="sd">        :param right: The right subarray to be merged.</span>
+<span class="sd">        :type right: list[int | float | str]</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">left_i</span><span class="p">,</span> <span class="n">right_i</span><span class="p">,</span> <span class="n">arr_i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+        <span class="k">while</span> <span class="n">left_i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="n">right_i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="n">left_i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">[</span><span class="n">right_i</span><span class="p">]:</span>
+                <span class="n">array</span><span class="p">[</span><span class="n">arr_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">left</span><span class="p">[</span><span class="n">left_i</span><span class="p">]</span>
+                <span class="n">left_i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">arr_i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">array</span><span class="p">[</span><span class="n">arr_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">right</span><span class="p">[</span><span class="n">right_i</span><span class="p">]</span>
+                <span class="n">right_i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">arr_i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">while</span> <span class="n">left_i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">):</span>
+            <span class="n">array</span><span class="p">[</span><span class="n">arr_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">left</span><span class="p">[</span><span class="n">left_i</span><span class="p">]</span>
+            <span class="n">arr_i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">left_i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">while</span> <span class="n">right_i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+            <span class="n">array</span><span class="p">[</span><span class="n">arr_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">right</span><span class="p">[</span><span class="n">right_i</span><span class="p">]</span>
+            <span class="n">arr_i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">right_i</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+
+
+<span class="c1"># Time Complexity O(n*log_n)</span>
+<div class="viewcode-block" id="MergeSort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.MergeSort">[docs]</a>
+<span class="k">class</span> <span class="nc">MergeSort</span><span class="p">(</span><span class="n">AMergeSort</span><span class="p">):</span>
+<div class="viewcode-block" id="MergeSort.merge_sort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.MergeSort.merge_sort">[docs]</a>
+    <span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sorts the given array using the sequential version of quick sort algorithm.</span>
+
+<span class="sd">        :param array: The array to be sorted.</span>
+<span class="sd">        :type array: list[int | float | str]</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">array</span><span class="p">[:</span><span class="n">mid</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">mid</span><span class="p">:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">merge_sort</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">merge_sort</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_merge</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="MultithreadingMergeSort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.MultithreadingMergeSort">[docs]</a>
+<span class="k">class</span> <span class="nc">MultithreadingMergeSort</span><span class="p">(</span><span class="n">AMergeSort</span><span class="p">):</span>
+    <span class="c1"># def __init__(self):</span>
+    <span class="c1">#     self._merge_sorting = MergeSort()</span>
+
+<div class="viewcode-block" id="MultithreadingMergeSort.merge_sort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.array_sorting.MultithreadingMergeSort.merge_sort">[docs]</a>
+    <span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sorts the given array using the multithreading version of merge sort algorithm.</span>
+
+<span class="sd">        :param array: The array to be sorted.</span>
+<span class="sd">        :type array: list[int | float | str]</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">array</span><span class="p">[:</span><span class="n">mid</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">mid</span><span class="p">:]</span>
+
+        <span class="n">th_1</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">merge_sort</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">left</span><span class="p">,))</span>
+        <span class="n">th_2</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">merge_sort</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">right</span><span class="p">,))</span>
+
+        <span class="n">th_1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">th_2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="n">th_1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+        <span class="n">th_2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_merge</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Viathorr.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

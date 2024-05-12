@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>dsa_algorithms package &#8212; Algorithms 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/scrolls.css?v=966ca10f" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/theme_extras.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div id="content">
+      <div class="header">
+        <h1 class="heading"><a href="index.html"
+          title="back to the documentation overview"><span>dsa_algorithms package</span></a></h1>
+      </div>
+      <div class="relnav" role="navigation" aria-label="related navigation">
+        <a href="#">dsa_algorithms package</a>
+      </div>
+      <div id="contentwrapper">
+        <div id="toc" role="navigation" aria-label="table of contents navigation">
+          <h3>Table of Contents</h3>
+          <ul>
+<li><a class="reference internal" href="#">dsa_algorithms package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-dsa_algorithms.array_sorting">dsa_algorithms.array_sorting module</a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.AMergeSort"><code class="docutils literal notranslate"><span class="pre">AMergeSort</span></code></a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.AMergeSort.merge_sort"><code class="docutils literal notranslate"><span class="pre">AMergeSort.merge_sort()</span></code></a></li>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.AMergeSort.sort"><code class="docutils literal notranslate"><span class="pre">AMergeSort.sort()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.AQuickSort"><code class="docutils literal notranslate"><span class="pre">AQuickSort</span></code></a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.AQuickSort.quick_sort"><code class="docutils literal notranslate"><span class="pre">AQuickSort.quick_sort()</span></code></a></li>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.AQuickSort.sort"><code class="docutils literal notranslate"><span class="pre">AQuickSort.sort()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.ArraySorting"><code class="docutils literal notranslate"><span class="pre">ArraySorting</span></code></a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.ArraySorting.sort"><code class="docutils literal notranslate"><span class="pre">ArraySorting.sort()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.MergeSort"><code class="docutils literal notranslate"><span class="pre">MergeSort</span></code></a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.MergeSort.merge_sort"><code class="docutils literal notranslate"><span class="pre">MergeSort.merge_sort()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.MultithreadingMergeSort"><code class="docutils literal notranslate"><span class="pre">MultithreadingMergeSort</span></code></a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.MultithreadingMergeSort.merge_sort"><code class="docutils literal notranslate"><span class="pre">MultithreadingMergeSort.merge_sort()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.MultithreadingQuickSort"><code class="docutils literal notranslate"><span class="pre">MultithreadingQuickSort</span></code></a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.MultithreadingQuickSort.quick_sort"><code class="docutils literal notranslate"><span class="pre">MultithreadingQuickSort.quick_sort()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.QuickSort"><code class="docutils literal notranslate"><span class="pre">QuickSort</span></code></a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting.QuickSort.quick_sort"><code class="docutils literal notranslate"><span class="pre">QuickSort.quick_sort()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-dsa_algorithms.array_sorting_proxy">dsa_algorithms.array_sorting_proxy module</a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting_proxy.ArraySortingProxy"><code class="docutils literal notranslate"><span class="pre">ArraySortingProxy</span></code></a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.array_sorting_proxy.ArraySortingProxy.sort"><code class="docutils literal notranslate"><span class="pre">ArraySortingProxy.sort()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-dsa_algorithms.execution_time_decorator">dsa_algorithms.execution_time_decorator module</a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.execution_time_decorator.ExecutionTimeDecorator"><code class="docutils literal notranslate"><span class="pre">ExecutionTimeDecorator</span></code></a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.execution_time_decorator.ExecutionTimeDecorator.sort"><code class="docutils literal notranslate"><span class="pre">ExecutionTimeDecorator.sort()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-dsa_algorithms.sorting_abstract_factory">dsa_algorithms.sorting_abstract_factory module</a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.sorting_abstract_factory.MultithreadingSortingFactory"><code class="docutils literal notranslate"><span class="pre">MultithreadingSortingFactory</span></code></a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.sorting_abstract_factory.MultithreadingSortingFactory.create_merge_sorting"><code class="docutils literal notranslate"><span class="pre">MultithreadingSortingFactory.create_merge_sorting()</span></code></a></li>
+<li><a class="reference internal" href="#dsa_algorithms.sorting_abstract_factory.MultithreadingSortingFactory.create_quick_sorting"><code class="docutils literal notranslate"><span class="pre">MultithreadingSortingFactory.create_quick_sorting()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dsa_algorithms.sorting_abstract_factory.Singleton"><code class="docutils literal notranslate"><span class="pre">Singleton</span></code></a></li>
+<li><a class="reference internal" href="#dsa_algorithms.sorting_abstract_factory.SortingAbstractFactory"><code class="docutils literal notranslate"><span class="pre">SortingAbstractFactory</span></code></a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.sorting_abstract_factory.SortingAbstractFactory.create_merge_sorting"><code class="docutils literal notranslate"><span class="pre">SortingAbstractFactory.create_merge_sorting()</span></code></a></li>
+<li><a class="reference internal" href="#dsa_algorithms.sorting_abstract_factory.SortingAbstractFactory.create_quick_sorting"><code class="docutils literal notranslate"><span class="pre">SortingAbstractFactory.create_quick_sorting()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dsa_algorithms.sorting_abstract_factory.SortingFactory"><code class="docutils literal notranslate"><span class="pre">SortingFactory</span></code></a><ul>
+<li><a class="reference internal" href="#dsa_algorithms.sorting_abstract_factory.SortingFactory.create_merge_sorting"><code class="docutils literal notranslate"><span class="pre">SortingFactory.create_merge_sorting()</span></code></a></li>
+<li><a class="reference internal" href="#dsa_algorithms.sorting_abstract_factory.SortingFactory.create_quick_sorting"><code class="docutils literal notranslate"><span class="pre">SortingFactory.create_quick_sorting()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-dsa_algorithms">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <div role="main">
+        
+  <section id="dsa-algorithms-package">
+<h1>dsa_algorithms package<a class="headerlink" href="#dsa-algorithms-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-dsa_algorithms.array_sorting">
+<span id="dsa-algorithms-array-sorting-module"></span><h2>dsa_algorithms.array_sorting module<a class="headerlink" href="#module-dsa_algorithms.array_sorting" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.AMergeSort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.array_sorting.</span></span><span class="sig-name descname"><span class="pre">AMergeSort</span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#AMergeSort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.AMergeSort" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dsa_algorithms.array_sorting.ArraySorting" title="dsa_algorithms.array_sorting.ArraySorting"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArraySorting</span></code></a></p>
+<p>Abstract base class for merge sort algorithm.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.AMergeSort.merge_sort">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">merge_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#AMergeSort.merge_sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.AMergeSort.merge_sort" title="Link to this definition">¶</a></dt>
+<dd><p>Abstract method that should be implemented by subclasses.
+Sorts the given array using the merge sort algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>array</strong> (<em>list</em><em>[</em><em>int</em><em> | </em><em>float</em><em> | </em><em>str</em><em>]</em>) – The array to be sorted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.AMergeSort.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#AMergeSort.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.AMergeSort.sort" title="Link to this definition">¶</a></dt>
+<dd><p>Sorts the given number array in ascending order, and string array in alphabetical order
+using quick sort algorithm.
+The original array is modified, and it should contain only integers/floats or only strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>array</strong> (<em>list</em><em>[</em><em>int</em><em> | </em><em>float</em><em> | </em><em>str</em><em>]</em>) – The array to be sorted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.AQuickSort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.array_sorting.</span></span><span class="sig-name descname"><span class="pre">AQuickSort</span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#AQuickSort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.AQuickSort" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dsa_algorithms.array_sorting.ArraySorting" title="dsa_algorithms.array_sorting.ArraySorting"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArraySorting</span></code></a></p>
+<p>Abstract base class for quick sort algorithm.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.AQuickSort.quick_sort">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">quick_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#AQuickSort.quick_sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.AQuickSort.quick_sort" title="Link to this definition">¶</a></dt>
+<dd><p>Abstract method that should be implemented by subclasses.
+Sorts the given array using the quick sort algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> (<em>list</em><em>[</em><em>int</em><em> | </em><em>float</em><em> | </em><em>str</em><em>]</em>) – The array to be sorted.</p></li>
+<li><p><strong>beg</strong> (<em>int</em>) – The beginning index of the array.</p></li>
+<li><p><strong>end</strong> (<em>int</em>) – The ending index of the array.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.AQuickSort.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#AQuickSort.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.AQuickSort.sort" title="Link to this definition">¶</a></dt>
+<dd><p>Sorts the given number array in ascending order, and string array in alphabetical order
+using quick sort algorithm.
+The original array is modified, and it should contain only integers/floats or only strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>array</strong> (<em>list</em><em>[</em><em>int</em><em> | </em><em>float</em><em> | </em><em>str</em><em>]</em>) – The array to be sorted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.ArraySorting">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.array_sorting.</span></span><span class="sig-name descname"><span class="pre">ArraySorting</span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#ArraySorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.ArraySorting" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract base class for sorting algorithms.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.ArraySorting.sort">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#ArraySorting.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.ArraySorting.sort" title="Link to this definition">¶</a></dt>
+<dd><p>Abstract method that should be implemented by subclasses.
+Sorts the given number array in ascending order, and string array in alphabetical order.
+The original array is modified, and it should contain only integers/floats or only strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>array</strong> (<em>list</em><em>[</em><em>int</em><em> | </em><em>float</em><em> | </em><em>str</em><em>]</em>) – The array to be sorted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.MergeSort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.array_sorting.</span></span><span class="sig-name descname"><span class="pre">MergeSort</span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#MergeSort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.MergeSort" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dsa_algorithms.array_sorting.AMergeSort" title="dsa_algorithms.array_sorting.AMergeSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">AMergeSort</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.MergeSort.merge_sort">
+<span class="sig-name descname"><span class="pre">merge_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#MergeSort.merge_sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.MergeSort.merge_sort" title="Link to this definition">¶</a></dt>
+<dd><p>Sorts the given array using the sequential version of quick sort algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>array</strong> (<em>list</em><em>[</em><em>int</em><em> | </em><em>float</em><em> | </em><em>str</em><em>]</em>) – The array to be sorted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.MultithreadingMergeSort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.array_sorting.</span></span><span class="sig-name descname"><span class="pre">MultithreadingMergeSort</span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#MultithreadingMergeSort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.MultithreadingMergeSort" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dsa_algorithms.array_sorting.AMergeSort" title="dsa_algorithms.array_sorting.AMergeSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">AMergeSort</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.MultithreadingMergeSort.merge_sort">
+<span class="sig-name descname"><span class="pre">merge_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#MultithreadingMergeSort.merge_sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.MultithreadingMergeSort.merge_sort" title="Link to this definition">¶</a></dt>
+<dd><p>Sorts the given array using the multithreading version of merge sort algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>array</strong> (<em>list</em><em>[</em><em>int</em><em> | </em><em>float</em><em> | </em><em>str</em><em>]</em>) – The array to be sorted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.MultithreadingQuickSort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.array_sorting.</span></span><span class="sig-name descname"><span class="pre">MultithreadingQuickSort</span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#MultithreadingQuickSort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.MultithreadingQuickSort" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dsa_algorithms.array_sorting.AQuickSort" title="dsa_algorithms.array_sorting.AQuickSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">AQuickSort</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.MultithreadingQuickSort.quick_sort">
+<span class="sig-name descname"><span class="pre">quick_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#MultithreadingQuickSort.quick_sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.MultithreadingQuickSort.quick_sort" title="Link to this definition">¶</a></dt>
+<dd><p>Sorts the given array using the multithreading version of quick sort algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> (<em>list</em><em>[</em><em>int</em><em> | </em><em>float</em><em> | </em><em>str</em><em>]</em>) – The array to be sorted.</p></li>
+<li><p><strong>beg</strong> (<em>int</em>) – The beginning index of the array.</p></li>
+<li><p><strong>end</strong> (<em>int</em>) – The ending index of the array.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.QuickSort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.array_sorting.</span></span><span class="sig-name descname"><span class="pre">QuickSort</span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#QuickSort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.QuickSort" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dsa_algorithms.array_sorting.AQuickSort" title="dsa_algorithms.array_sorting.AQuickSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">AQuickSort</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting.QuickSort.quick_sort">
+<span class="sig-name descname"><span class="pre">quick_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting.html#QuickSort.quick_sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting.QuickSort.quick_sort" title="Link to this definition">¶</a></dt>
+<dd><p>Sorts the given array using the sequential version of quick sort algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> (<em>list</em><em>[</em><em>int</em><em> | </em><em>float</em><em> | </em><em>str</em><em>]</em>) – The array to be sorted.</p></li>
+<li><p><strong>beg</strong> (<em>int</em>) – The beginning index of the array.</p></li>
+<li><p><strong>end</strong> (<em>int</em>) – The ending index of the array.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-dsa_algorithms.array_sorting_proxy">
+<span id="dsa-algorithms-array-sorting-proxy-module"></span><h2>dsa_algorithms.array_sorting_proxy module<a class="headerlink" href="#module-dsa_algorithms.array_sorting_proxy" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting_proxy.ArraySortingProxy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.array_sorting_proxy.</span></span><span class="sig-name descname"><span class="pre">ArraySortingProxy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sorting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dsa_algorithms.array_sorting.ArraySorting" title="dsa_algorithms.array_sorting.ArraySorting"><span class="pre">ArraySorting</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting_proxy.html#ArraySortingProxy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting_proxy.ArraySortingProxy" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dsa_algorithms.array_sorting.ArraySorting" title="dsa_algorithms.array_sorting.ArraySorting"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArraySorting</span></code></a></p>
+<p>Proxy class for sorting arrays, ensuring array validity before sorting.
+This class acts as a proxy to prevent execution of sorting operation by other sorting classes if the array contains
+elements other than only integers/floats, or only strings.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.array_sorting_proxy.ArraySortingProxy.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dsa_algorithms/array_sorting_proxy.html#ArraySortingProxy.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.array_sorting_proxy.ArraySortingProxy.sort" title="Link to this definition">¶</a></dt>
+<dd><p>Sorts the given number array in ascending order, and string array in alphabetical order,
+after validating the array content.
+The original array is modified, and it should contain only integers/floats or only strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>array</strong> (<em>list</em><em>[</em><em>int</em><em> | </em><em>float</em><em> | </em><em>str</em><em>]</em>) – The array to be sorted.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the array contains elements other than integers, floats, or strings.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-dsa_algorithms.execution_time_decorator">
+<span id="dsa-algorithms-execution-time-decorator-module"></span><h2>dsa_algorithms.execution_time_decorator module<a class="headerlink" href="#module-dsa_algorithms.execution_time_decorator" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.execution_time_decorator.ExecutionTimeDecorator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.execution_time_decorator.</span></span><span class="sig-name descname"><span class="pre">ExecutionTimeDecorator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sorting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dsa_algorithms.array_sorting.ArraySorting" title="dsa_algorithms.array_sorting.ArraySorting"><span class="pre">ArraySorting</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dsa_algorithms/execution_time_decorator.html#ExecutionTimeDecorator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.execution_time_decorator.ExecutionTimeDecorator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dsa_algorithms.array_sorting.ArraySorting" title="dsa_algorithms.array_sorting.ArraySorting"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArraySorting</span></code></a></p>
+<p>A decorator class that adds functionality to measure the execution time of the sorting algorithm.
+This class wraps an instance of a class that implements the ArraySorting interface and adds
+functionality to measure the execution time of the sorting algorithm.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.execution_time_decorator.ExecutionTimeDecorator.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dsa_algorithms/execution_time_decorator.html#ExecutionTimeDecorator.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.execution_time_decorator.ExecutionTimeDecorator.sort" title="Link to this definition">¶</a></dt>
+<dd><p>Sorts the given number array in ascending order, and string array in alphabetical order,
+using the wrapped sorting algorithm and prints the execution time of the sorting algorithm.
+The original array is modified, and it should contain only integers/floats or only strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>array</strong> (<em>list</em><em>[</em><em>int</em><em> | </em><em>float</em><em> | </em><em>str</em><em>]</em>) – The array to be sorted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-dsa_algorithms.sorting_abstract_factory">
+<span id="dsa-algorithms-sorting-abstract-factory-module"></span><h2>dsa_algorithms.sorting_abstract_factory module<a class="headerlink" href="#module-dsa_algorithms.sorting_abstract_factory" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.sorting_abstract_factory.MultithreadingSortingFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.sorting_abstract_factory.</span></span><span class="sig-name descname"><span class="pre">MultithreadingSortingFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dsa_algorithms/sorting_abstract_factory.html#MultithreadingSortingFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.sorting_abstract_factory.MultithreadingSortingFactory" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dsa_algorithms.sorting_abstract_factory.SortingFactory" title="dsa_algorithms.sorting_abstract_factory.SortingFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">SortingFactory</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.sorting_abstract_factory.MultithreadingSortingFactory.create_merge_sorting">
+<span class="sig-name descname"><span class="pre">create_merge_sorting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dsa_algorithms.array_sorting_proxy.ArraySortingProxy" title="dsa_algorithms.array_sorting_proxy.ArraySortingProxy"><span class="pre">ArraySortingProxy</span></a></span></span><a class="reference internal" href="_modules/dsa_algorithms/sorting_abstract_factory.html#MultithreadingSortingFactory.create_merge_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.sorting_abstract_factory.MultithreadingSortingFactory.create_merge_sorting" title="Link to this definition">¶</a></dt>
+<dd><p>Creates an instance of the ArraySorting derived class that performs multithreading version of
+merge sort algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An instance of the ArraysSortingProxy derived class that performs multithreading version of</p>
+</dd>
+</dl>
+<p>merge sort algorithm.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.sorting_abstract_factory.MultithreadingSortingFactory.create_quick_sorting">
+<span class="sig-name descname"><span class="pre">create_quick_sorting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dsa_algorithms.array_sorting_proxy.ArraySortingProxy" title="dsa_algorithms.array_sorting_proxy.ArraySortingProxy"><span class="pre">ArraySortingProxy</span></a></span></span><a class="reference internal" href="_modules/dsa_algorithms/sorting_abstract_factory.html#MultithreadingSortingFactory.create_quick_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.sorting_abstract_factory.MultithreadingSortingFactory.create_quick_sorting" title="Link to this definition">¶</a></dt>
+<dd><p>Creates an instance of the ArraySorting derived class that performs multithreading version of
+quick sort algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An instance of the ArraysSortingProxy derived class that performs multithreading version of
+quick sort algorithm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.sorting_abstract_factory.Singleton">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.sorting_abstract_factory.</span></span><span class="sig-name descname"><span class="pre">Singleton</span></span><a class="reference internal" href="_modules/dsa_algorithms/sorting_abstract_factory.html#Singleton"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.sorting_abstract_factory.Singleton" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></p>
+<p>A metaclass implementing the Singleton design pattern.
+The Singleton metaclass ensures that only one instance of a class is created and
+provides a way to access that instance globally.
+This metaclass should be used as a metaclass for classes that should have only
+one instance throughout the lifetime of the program.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.sorting_abstract_factory.SortingAbstractFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.sorting_abstract_factory.</span></span><span class="sig-name descname"><span class="pre">SortingAbstractFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dsa_algorithms/sorting_abstract_factory.html#SortingAbstractFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.sorting_abstract_factory.SortingAbstractFactory" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract factory for creating instances of sorting algorithm classes.
+This abstract factory is implemented as a singleton to ensure that only one instance
+of each type of Sorting Abstract Factory is created.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.sorting_abstract_factory.SortingAbstractFactory.create_merge_sorting">
+<span class="sig-name descname"><span class="pre">create_merge_sorting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dsa_algorithms.array_sorting_proxy.ArraySortingProxy" title="dsa_algorithms.array_sorting_proxy.ArraySortingProxy"><span class="pre">ArraySortingProxy</span></a></span></span><a class="reference internal" href="_modules/dsa_algorithms/sorting_abstract_factory.html#SortingAbstractFactory.create_merge_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.sorting_abstract_factory.SortingAbstractFactory.create_merge_sorting" title="Link to this definition">¶</a></dt>
+<dd><p>Abstract method to create an instance of the ArraySorting derived class that performs merge sort algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An instance of the ArraysSortingProxy derived class that performs merge sort algorithm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.sorting_abstract_factory.SortingAbstractFactory.create_quick_sorting">
+<span class="sig-name descname"><span class="pre">create_quick_sorting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dsa_algorithms.array_sorting_proxy.ArraySortingProxy" title="dsa_algorithms.array_sorting_proxy.ArraySortingProxy"><span class="pre">ArraySortingProxy</span></a></span></span><a class="reference internal" href="_modules/dsa_algorithms/sorting_abstract_factory.html#SortingAbstractFactory.create_quick_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.sorting_abstract_factory.SortingAbstractFactory.create_quick_sorting" title="Link to this definition">¶</a></dt>
+<dd><p>Abstract method to create an instance of the ArraySorting derived class that performs quick sort algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An instance of the ArraysSortingProxy derived class that performs quick sort algorithm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dsa_algorithms.sorting_abstract_factory.SortingFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa_algorithms.sorting_abstract_factory.</span></span><span class="sig-name descname"><span class="pre">SortingFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dsa_algorithms/sorting_abstract_factory.html#SortingFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.sorting_abstract_factory.SortingFactory" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dsa_algorithms.sorting_abstract_factory.SortingAbstractFactory" title="dsa_algorithms.sorting_abstract_factory.SortingAbstractFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">SortingAbstractFactory</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.sorting_abstract_factory.SortingFactory.create_merge_sorting">
+<span class="sig-name descname"><span class="pre">create_merge_sorting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dsa_algorithms.array_sorting_proxy.ArraySortingProxy" title="dsa_algorithms.array_sorting_proxy.ArraySortingProxy"><span class="pre">ArraySortingProxy</span></a></span></span><a class="reference internal" href="_modules/dsa_algorithms/sorting_abstract_factory.html#SortingFactory.create_merge_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.sorting_abstract_factory.SortingFactory.create_merge_sorting" title="Link to this definition">¶</a></dt>
+<dd><p>Creates an instance of the ArraySorting derived class that performs sequential version of merge sort algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An instance of the ArraysSortingProxy derived class that performs merge sort algorithm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsa_algorithms.sorting_abstract_factory.SortingFactory.create_quick_sorting">
+<span class="sig-name descname"><span class="pre">create_quick_sorting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dsa_algorithms.array_sorting_proxy.ArraySortingProxy" title="dsa_algorithms.array_sorting_proxy.ArraySortingProxy"><span class="pre">ArraySortingProxy</span></a></span></span><a class="reference internal" href="_modules/dsa_algorithms/sorting_abstract_factory.html#SortingFactory.create_quick_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dsa_algorithms.sorting_abstract_factory.SortingFactory.create_quick_sorting" title="Link to this definition">¶</a></dt>
+<dd><p>Creates an instance of the ArraySorting derived class that performs sequential version of quick sort algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An instance of the ArraysSortingProxy derived class that performs quick sort algorithm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-dsa_algorithms">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dsa_algorithms" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Viathorr.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

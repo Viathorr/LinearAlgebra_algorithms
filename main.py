@@ -4,7 +4,7 @@ from dsa_algorithms.execution_time_decorator import *
 
 def sorting_check(sorting_algorithm: ArraySorting) -> None:
     """
-    Utility function that performs sorting operation upon a random array by a given sorting algorithm.
+    Utility function that performs a sorting operation on a random array using a specified sorting algorithm.
 
     :param sorting_algorithm: A particular sorting algorithm.
     :type sorting_algorithm: ArraySorting
@@ -42,8 +42,6 @@ def main() -> None:
     print('\n\n~~~~ Multithreading Merge Sort ~~~~')
     multithreading_merge_sort = multithread_sorting_factory.create_merge_sorting()
     sorting_check(multithreading_merge_sort)
-
-    print(sorting_check.__doc__)
 
 
 if __name__ == '__main__':

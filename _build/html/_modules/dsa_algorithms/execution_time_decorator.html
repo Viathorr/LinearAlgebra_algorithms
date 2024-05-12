@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dsa_algorithms.execution_time_decorator &#8212; Algorithms 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/scrolls.css?v=966ca10f" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/theme_extras.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div id="content">
+      <div class="header">
+        <h1 class="heading"><a href="../../index.html"
+          title="back to the documentation overview"><span>dsa_algorithms.execution_time_decorator</span></a></h1>
+      </div>
+      <div class="relnav" role="navigation" aria-label="related navigation">
+        <a href="#">dsa_algorithms.execution_time_decorator</a>
+      </div>
+      <div id="contentwrapper">
+        <div role="main">
+        
+  <h1>Source code for dsa_algorithms.execution_time_decorator</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.array_sorting</span> <span class="kn">import</span> <span class="n">ArraySorting</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<div class="viewcode-block" id="ExecutionTimeDecorator">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.execution_time_decorator.ExecutionTimeDecorator">[docs]</a>
+<span class="k">class</span> <span class="nc">ExecutionTimeDecorator</span><span class="p">(</span><span class="n">ArraySorting</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A decorator class that adds functionality to measure the execution time of the sorting algorithm.</span>
+<span class="sd">    This class wraps an instance of a class that implements the ArraySorting interface and adds</span>
+<span class="sd">    functionality to measure the execution time of the sorting algorithm.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sorting</span><span class="p">:</span> <span class="n">ArraySorting</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the ExecutionTimeDecorator.</span>
+
+<span class="sd">        :param sorting: An instance of a class that implements the ArraySorting interface.</span>
+<span class="sd">        :type sorting: ArraySorting</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__sorting</span> <span class="o">=</span> <span class="n">sorting</span>
+
+<div class="viewcode-block" id="ExecutionTimeDecorator.sort">
+<a class="viewcode-back" href="../../dsa_algorithms.html#dsa_algorithms.execution_time_decorator.ExecutionTimeDecorator.sort">[docs]</a>
+    <span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sorts the given number array in ascending order, and string array in alphabetical order,</span>
+<span class="sd">        using the wrapped sorting algorithm and prints the execution time of the sorting algorithm.</span>
+<span class="sd">        The original array is modified, and it should contain only integers/floats or only strings.</span>
+
+<span class="sd">        :param array: The array to be sorted.</span>
+<span class="sd">        :type array: list[int | float | str]</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__sorting</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Algorithm execution time: </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">s&#39;</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Viathorr.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>
