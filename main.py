@@ -3,13 +3,6 @@ from dsa_algorithms.execution_time_decorator import *
 
 
 def sorting_check(sorting_algorithm: ArraySorting) -> None:
-    """
-    Utility function that performs a sorting operation on a random array using a specified sorting algorithm.
-
-    :param sorting_algorithm: A particular sorting algorithm.
-    :type sorting_algorithm: ArraySorting
-    :return: None
-    """
     array = [1, 4, 2, 8, 2, 4, 9, 23, 1, 0, -4, -1] * 50
     print(f'Initial array: {array}')
     decorator = ExecutionTimeDecorator(sorting_algorithm)
@@ -18,12 +11,6 @@ def sorting_check(sorting_algorithm: ArraySorting) -> None:
 
 
 def main() -> None:
-    """
-    Main function to be executed.
-    Performs sorting by quick sort and merge sort algorithms, both sequential and multithreading versions.
-
-    :return: None
-    """
     sorting_factory = SortingFactory()
     multithread_sorting_factory = MultithreadingSortingFactory()
 
