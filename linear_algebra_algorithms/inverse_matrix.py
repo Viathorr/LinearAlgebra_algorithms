@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from different_algorithms.linear_algebra_algorithms.matrix_multiplication import NaiveMatrixMultiplication
+from .matrix_multiplication import NaiveMatrixMultiplication
 from copy import deepcopy
 
 
@@ -79,7 +79,7 @@ if __name__ == '__main__':
 
     inverse = compute_inverse.inverse(deepcopy(m))
 
-    multiple = compute_multiple.multiply(m, inverse)
+    multiple = compute_multiple._multiply(m, inverse)
 
     for i in multiple:
         print('[ ', end='')

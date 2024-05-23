@@ -11,22 +11,16 @@ def print_matrix(matrix: list[list[int | float]]):
 
 
 class MatrixMultiplication(ABC):
-    @abstractmethod
-    def multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
-        pass
-
-
-# Proxy pattern (checks whether matrices are valid for multiplication)
-class ValidatedMatrixMultiplication(MatrixMultiplication):
-    def __init__(self, matrix_multiplication: MatrixMultiplication) -> None:
-        self._matrix_multiplication = matrix_multiplication
-
-    def multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
+    def execute(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
         if self.__can_multiply(matrix1, matrix2):
-            return self._matrix_multiplication.multiply(matrix1, matrix2)
+            return self._multiply(matrix1, matrix2)
         else:
             raise Exception('Matrices with provided dimensions can\'t be multiplied: The number of columns in first'
                             'matrix is not equal to the number of rows in second matrix.')
+
+    @abstractmethod
+    def _multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
+        pass
 
     def __can_multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> bool:
         if len(matrix1) and len(matrix2) and len(matrix1[0]) == len(matrix2):
@@ -40,16 +34,16 @@ class TimeMatrixMultiplication(MatrixMultiplication):
     def __init__(self, matrix_multiplication: MatrixMultiplication):
         self._matrix_multiplication = matrix_multiplication
 
-    def multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
+    def _multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
         start = time.time()
-        res = self._matrix_multiplication.multiply(matrix1, matrix2)
+        res = self._matrix_multiplication._multiply(matrix1, matrix2)
         print(f'Multiplication execution time: {time.time() - start:.6f}s')
         return res
 
 
 # Time Complexity: O(n^3)
 class NaiveMatrixMultiplication(MatrixMultiplication):
-    def multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
+    def _multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
         rows_1, rows_2, cols_1, cols_2 = len(matrix1), len(matrix2), len(matrix1[0]), len(matrix2[0])
 
         res_matrix = [[0 for _ in range(cols_2)] for _ in range(rows_1)]
@@ -64,7 +58,7 @@ class NaiveMatrixMultiplication(MatrixMultiplication):
 
 # Time Complexity: O(n^2.8074)
 class StrassenMatrixMultiplication(MatrixMultiplication):
-    def multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
+    def _multiply(self, matrix1: list[list[int | float]], matrix2: list[list[int | float]]) -> list[list[int | float]]:
         rows_1, cols_1, cols_2 = len(matrix1), len(matrix1[0]), len(matrix2[0])
         max_dim = max([rows_1, cols_1, cols_2])
         new_dim = 2 ** math.ceil(math.log2(max_dim))
@@ -165,12 +159,11 @@ if __name__ == "__main__":
     # print([[dummy_matrix[i][j] for j in range(cols2)] for i in range(rows1)])
 
     multiplication = NaiveMatrixMultiplication()
-    validated_multiplication = ValidatedMatrixMultiplication(multiplication)
-    multiplication_with_exec_time = TimeMatrixMultiplication(validated_multiplication)
+    multiplication_with_exec_time = TimeMatrixMultiplication(multiplication)
     start_time = time.time()
     multiple_matrix = [[]]
     try:
-        multiple_matrix = multiplication_with_exec_time.multiply(matrix_a, matrix_b)
+        multiple_matrix = multiplication_with_exec_time.execute(matrix_a, matrix_b)
     except Exception as err:
         print(f'Error: \n{err.args[0]}')
     else:
